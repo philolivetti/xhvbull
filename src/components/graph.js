@@ -86,7 +86,7 @@ const Graph = ({ data }) => {
           />
         </YAxis>
         <Tooltip content={customTooltip} />
-        <Legend offset={100} />
+        <Legend offset={-100} />
         <Line
           {...lineParams}
           yAxisId="left"
