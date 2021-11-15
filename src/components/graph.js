@@ -64,7 +64,7 @@ const Graph = ({ data }) => {
           bottom: 100,
         }}
       >
-        <XAxis dataKey="period" />
+        <XAxis dataKey="period" tick={false} />
 
         <YAxis
           yAxisId="left"
@@ -86,7 +86,7 @@ const Graph = ({ data }) => {
           />
         </YAxis>
         <Tooltip content={customTooltip} />
-        <Legend offset={-100} />
+        <Legend height={50} verticalAlign="bottom" />
         <Line
           {...lineParams}
           yAxisId="left"
