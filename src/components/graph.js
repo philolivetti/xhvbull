@@ -67,23 +67,17 @@ const Graph = ({ data }) => {
         }}
       >
         <XAxis dataKey="period" />
+
         <YAxis
           yAxisId="left"
-          tickFormatter={tick => (tick / 1000).toLocaleString()}
-        >
-          <Label
-            value="Market Cap - 1000's"
-            angle={-90}
-            offset={-35}
-            position="insideLeft"
-            fill="#fff"
-            style={{ textAnchor: "middle", fontSize: "12px" }}
-          />
-        </YAxis>
+          tickFormatter={tick => tick.toLocaleString()}
+          tick={{ fontSize: "10px" }}
+        />
         <YAxis
           yAxisId="right"
           orientation="right"
           tickFormatter={tick => tick.toLocaleString()}
+          tick={{ fontSize: "10px" }}
         >
           <Label
             value="XHV Price"

@@ -78,7 +78,37 @@ class IndexPage extends React.Component {
     return (
       <Layout>
         <SEO title="LFG: XHV Price based on xUSD" />
-        <div className="w-full md:w-1/3 lg:w-1/6">
+
+        <div className="w-full text-white text-sm py-5 text-justify">
+          <p className="mb-2">
+            This is an easy to use XHV price forecasting tool based on various
+            xAsset minting characteristics.
+          </p>
+          <p className="mb-2">
+            Inspired by crypt∞li's 2020 Medium{" "}
+            <a
+              className="text-xhv-blue"
+              target="_blank"
+              href="https://medium.com/@crypto.oli/haven-protocol-xhv-future-price-model-based-on-xusd-adoption-1ee5a0113979"
+            >
+              article
+            </a>{" "}
+            and CTO Larsson's recent{" "}
+            <a
+              className="text-xhv-blue"
+              target="_blank"
+              href="https://www.youtube.com/watch?v=J6Oz5RdMJgg"
+            >
+              video
+            </a>
+            , please read and watch both of these excellent resources.
+          </p>
+          <p className="md:display-none">
+            The user experience on mobile is not ideal. Please click on the
+            graph to see tooltip.
+          </p>
+        </div>
+        <div className="w-full md:w-1/3 lg:w-1/6 flex flex-wrap">
           <Form
             {...formParams}
             updateFn={(key, value) => {
@@ -94,7 +124,7 @@ class IndexPage extends React.Component {
             }}
           />
           <button
-            className="mt-10 inline-block bg-xhv-blue py-2 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-xhv-bluer"
+            className="mt-10 mx-2 inline-block bg-xhv-blue py-2 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-xhv-bluer"
             onClick={() => {
               this.setState({ showTable: !showTable })
             }}
@@ -102,7 +132,7 @@ class IndexPage extends React.Component {
             {showTable ? "Hide" : "Show"} Data
           </button>
         </div>
-        <div className="w-full md:w-2/3 lg:w-5/6 mt-10">
+        <div className="w-full md:w-2/3 lg:w-5/6 mt-10 h-screen md:h-auto">
           <Graph data={calculations} />
         </div>
         {showTable ? <Table data={calculations} /> : <></>}
