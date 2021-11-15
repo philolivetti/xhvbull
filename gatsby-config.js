@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `XHV Bull`,
     description: `Price Models on XHV based on xUSD Minting and usage`,
-    author: `@xPhilolivetti`,
+    author: `@xPhilOlivetti`,
   },
   flags: {
     THE_FLAG: false,
@@ -29,25 +29,6 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/assets/xhv-logo.png`, // This path is relative to the root of the site.
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        // The property ID; the tracking code won't be generated without it
-        trackingId: "G-7YY60ZKFKZ",
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: true,
-        // Setting this parameter is optional
-        anonymize: true,
-        // Setting this parameter is also optional
-        respectDNT: true,
-        // Avoids sending pageview hits from custom paths
-        exclude: ["/preview/**", "/do-not-track/me/too/"],
-        defer: false,
-        // Any additional optional fields
-        sampleRate: 5,
-        siteSpeedSampleRate: 10,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
