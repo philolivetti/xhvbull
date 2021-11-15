@@ -85,25 +85,25 @@ class IndexPage extends React.Component {
             xAsset minting characteristics.
           </p>
           <p className="mb-2">
-            Inspired by crypt∞li's 2020 Medium{" "}
+            Inspired by{" "}
             <a
               className="text-xhv-blue"
               target="_blank"
               href="https://medium.com/@crypto.oli/haven-protocol-xhv-future-price-model-based-on-xusd-adoption-1ee5a0113979"
             >
-              article
+              crypt∞li's 2020 Medium article
             </a>{" "}
-            and CTO Larsson's recent{" "}
+            and
             <a
               className="text-xhv-blue"
               target="_blank"
               href="https://www.youtube.com/watch?v=J6Oz5RdMJgg"
             >
-              video
+              CTO Larsson's video
             </a>
             , please read and watch both of these excellent resources.
           </p>
-          <p className="md:display-none">
+          <p className="md:hidden">
             The user experience on mobile is not ideal. Please click on the
             graph to see tooltip.
           </p>
