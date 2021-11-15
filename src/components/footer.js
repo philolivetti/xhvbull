@@ -39,7 +39,7 @@ export default function Example() {
           </a>
         </div>
         <p className="text-xs text-white pb-5">
-          IF you want to buy me a beer or coffee:{" "}
+          If you want to buy me a beer or coffee:{" "}
           <span className="text-xhv-blue break-all">
             hvxy3cJ5C8jBfA3oPrjMNPNyv9fXiJu6NY4hwwvzN9kQBRfb6QAn5Z854s3ZEbBX5bSaQdvrgZbofHbmkTR1X87d2GPfroLLHz
           </span>
