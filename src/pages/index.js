@@ -17,9 +17,9 @@ class IndexPage extends React.Component {
       price: 18.11,
       xUsdSupply: 22267043,
       xUsdMint: 4000000,
-      xUsdInflation: 0.1,
-      priceAppreciation: 0.3,
-      periods: 200,
+      xUsdInflation: 0.25,
+      priceAppreciation: 0.25,
+      periods: 300,
       calculations: [],
       showTable: false,
     }
@@ -77,8 +77,8 @@ class IndexPage extends React.Component {
     }
     return (
       <Layout>
-        <SEO title="Home" />
-        <div className="w-full md:w-1/3 lg:w-1/5">
+        <SEO title="LFG: XHV Price based on xUSD" />
+        <div className="w-full md:w-1/3 lg:w-1/6">
           <Form
             {...formParams}
             updateFn={(key, value) => {
@@ -102,7 +102,9 @@ class IndexPage extends React.Component {
             {showTable ? "Hide" : "Show"} Data
           </button>
         </div>
-        <Graph data={calculations} />
+        <div className="w-full md:w-2/3 lg:w-5/6 mt-10">
+          <Graph data={calculations} />
+        </div>
         {showTable ? <Table data={calculations} /> : <></>}
       </Layout>
     )

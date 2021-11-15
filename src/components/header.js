@@ -3,6 +3,8 @@
 import React from "react"
 import Logo from "../assets/xhv-logo.svg"
 export default function Example() {
+  const buttonClasses =
+    "inline-block bg-xhv-blue py-2 px-4 border border-transparent rounded-md text-xs font-medium text-white hover:bg-xhv-bluer"
   return (
     <header className="bg-xhv-dark">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
@@ -12,11 +14,26 @@ export default function Example() {
             <h2 className="ml-5 font-lg font-bold text-white">Haven Bull</h2>
           </div>
           <div className="ml-10 space-x-4">
+            <a href="https://havenprotocol.org/" className={buttonClasses}>
+              Haven Protocol
+            </a>
             <a
-              href="https://havenprotocol.org/"
-              className="inline-block bg-xhv-blue py-2 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-xhv-bluer"
+              href="https://github.com/philolivetti/xhvbull/"
+              className={buttonClasses}
             >
-              Protocol Website
+              Github
+            </a>
+            <a
+              href="https://medium.com/@crypto.oli/haven-protocol-xhv-future-price-model-based-on-xusd-adoption-1ee5a0113979"
+              className={buttonClasses}
+            >
+              crypt∞li Article
+            </a>
+            <a
+              href="https://www.youtube.com/watch?v=J6Oz5RdMJgg"
+              className={buttonClasses}
+            >
+              CTO Larsson Video
             </a>
           </div>
         </div>

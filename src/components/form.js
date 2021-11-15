@@ -13,7 +13,7 @@ const Input = ({
     <>
       <label
         htmlFor="email"
-        className="block text-sm font-medium text-white pl-2 mt-5"
+        className="block text-sm font-medium text-white pl-2 mt-3"
       >
         {label}
       </label>
@@ -54,7 +54,7 @@ export default ({
     { label: "XHV Market Price", value: price, key: "price", isPrice: true },
     {
       label: "XHV Market Cap",
-      value: price * xhvSupply,
+      value: (price * xhvSupply).toFixed(0),
       key: "marketCap",
       readOnly: true,
       isPrice: true,
@@ -68,7 +68,7 @@ export default ({
       isPercentage: true,
     },
     {
-      label: "XHV Price Appreciation per period",
+      label: "XHV Price Appreciation",
       value: priceAppreciation,
       key: "priceAppreciation",
       isPercentage: true,
