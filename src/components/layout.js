@@ -31,9 +31,11 @@ const Layout = ({ children }) => {
           margin: `0 auto`,
           maxWidth: 1280,
           padding: `0 1.0875rem 1.45rem`,
+          display: "flex",
+          flexWrap: "wrap",
         }}
       >
-        <main>{children}</main>
+        {children}
       </div>
     </div>
   )

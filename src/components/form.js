@@ -44,7 +44,9 @@ export default ({
   price,
   xUsdSupply,
   xUsdMint,
+  xUsdInflation,
   priceAppreciation,
+  periods,
   updateFn,
 }) => {
   const inputs = [
@@ -60,17 +62,24 @@ export default ({
     { label: "Starting xUSD Supply", value: xUsdSupply, key: "xUsdSupply" },
     { label: "xUSD Minted per period", value: xUsdMint, key: "xUsdMint" },
     {
+      label: "xUSD Mint Inflation",
+      value: xUsdInflation,
+      key: "xUsdInflation",
+      isPercentage: true,
+    },
+    {
       label: "XHV Price Appreciation per period",
       value: priceAppreciation,
       key: "priceAppreciation",
       isPercentage: true,
     },
+    { label: "Mint/Burn Periods", value: periods, key: "periods" },
   ]
   return (
-    <div className="w-full md:w-1/3 lg:w-1/5">
+    <>
       {inputs.map(i => (
         <Input {...i} updateFn={newValue => updateFn(i.key, newValue)} />
       ))}
-    </div>
+    </>
   )
 }
