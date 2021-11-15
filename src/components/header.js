@@ -9,7 +9,9 @@ export default function Example() {
         <div className="w-full py-6 flex items-center justify-between border-b border-indigo-500 lg:border-none">
           <div className="flex items-center">
             <img className="h-10 w-auto" src={Logo} />
-            <h2 className="ml-5 font-lg font-bold text-white">Haven UpOnly</h2>
+            <h2 className="ml-5 font-lg font-bold text-white">
+              Haven Bullish AF
+            </h2>
           </div>
           <div className="ml-10 space-x-4">
             <a

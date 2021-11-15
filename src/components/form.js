@@ -1,6 +1,14 @@
 import React from "react"
-
-const Input = ({ label, key, value, updateFn }) => {
+import NumberFormat from "react-number-format"
+const Input = ({
+  label,
+  key,
+  value,
+  readOnly = false,
+  isPrice = false,
+  isPercentage = false,
+  updateFn,
+}) => {
   return (
     <>
       <label
@@ -10,13 +18,22 @@ const Input = ({ label, key, value, updateFn }) => {
         {label}
       </label>
       <div className="mt-1">
-        <input
+        <NumberFormat
+          readOnly={readOnly}
           type="text"
           name={key}
           id={key}
-          className="p-2 focus:outline-none focus:border-xhv-blue-500 block w-full text-md border-white border-2 rounded-md"
+          prefix={isPrice ? "$ " : ""}
+          suffix={isPercentage ? " %" : ""}
+          thousandSeparator={true}
+          className={`
+            p-2 focus:outline-none focus:border-xhv-blue-500 block w-full text-md border-white border-2 rounded-md
+            ${readOnly ? "opacity-50" : ""}`}
           value={value}
-          onChange={updateFn}
+          onValueChange={values => {
+            const { formattedValue, value } = values
+            updateFn(value)
+          }}
         />
       </div>
     </>
@@ -31,20 +48,28 @@ export default ({
   updateFn,
 }) => {
   const inputs = [
-    { label: "XHV Supply", value: xhvSupply, key: "xhvSupply" },
-    { label: "XHV Market Price", value: price, key: "price" },
-    { label: "xUSD Supply", value: xUsdSupply, key: "xUsdSupply" },
-    { label: "xUSD Mint", value: xUsdMint, key: "xUsdMint" },
+    { label: "Starting XHV Supply", value: xhvSupply, key: "xhvSupply" },
+    { label: "XHV Market Price", value: price, key: "price", isPrice: true },
     {
-      label: "Price Appreciation",
+      label: "XHV Market Cap",
+      value: price * xhvSupply,
+      key: "marketCap",
+      readOnly: true,
+      isPrice: true,
+    },
+    { label: "Starting xUSD Supply", value: xUsdSupply, key: "xUsdSupply" },
+    { label: "xUSD Minted per period", value: xUsdMint, key: "xUsdMint" },
+    {
+      label: "XHV Price Appreciation per period",
       value: priceAppreciation,
       key: "priceAppreciation",
+      isPercentage: true,
     },
   ]
   return (
-    <div className="w-1/4">
+    <div className="w-full md:w-1/3 lg:w-1/5">
       {inputs.map(i => (
-        <Input {...i} updateFn={event => updateFn(i.key, event.target.value)} />
+        <Input {...i} updateFn={newValue => updateFn(i.key, newValue)} />
       ))}
     </div>
   )
