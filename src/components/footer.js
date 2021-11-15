@@ -6,7 +6,7 @@ export default function Example() {
   const buttonClasses =
     "inline-block bg-xhv-blue py-2 px-4 border border-transparent rounded-md text-xs font-medium text-white hover:bg-xhv-bluer"
   return (
-    <footer className="bg-xhv-dark bg-opacity-25">
+    <footer className="bg-xhv-dark bg-opacity-25 mt-10">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="w-full py-5 flex flex-wrap flex-col md:flex-row items-center justify-between">
           <div className="inline-block">

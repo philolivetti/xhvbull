@@ -54,10 +54,8 @@ const Graph = ({ data }) => {
     type: "monotone",
   }
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="99%" height="100%">
       <LineChart
-        width={500}
-        height={300}
         data={data}
         margin={{
           top: 25,
@@ -70,7 +68,7 @@ const Graph = ({ data }) => {
 
         <YAxis
           yAxisId="left"
-          tickFormatter={tick => tick.toLocaleString()}
+          tickFormatter={tick => (tick / 1000000).toLocaleString() + " mil"}
           tick={{ fontSize: "10px" }}
         />
         <YAxis
@@ -88,7 +86,7 @@ const Graph = ({ data }) => {
           />
         </YAxis>
         <Tooltip content={customTooltip} />
-        <Legend />
+        <Legend offset={100} />
         <Line
           {...lineParams}
           yAxisId="left"

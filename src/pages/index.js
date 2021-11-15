@@ -93,7 +93,7 @@ class IndexPage extends React.Component {
             >
               crypt∞li's 2020 Medium article
             </a>{" "}
-            and
+            and{" "}
             <a
               className="text-xhv-blue"
               target="_blank"
