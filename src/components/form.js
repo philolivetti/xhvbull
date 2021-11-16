@@ -2,7 +2,7 @@ import React from "react"
 import NumberFormat from "react-number-format"
 const Input = ({
   label,
-  key,
+  name,
   value,
   readOnly = false,
   isPrice = false,
@@ -21,8 +21,7 @@ const Input = ({
         <NumberFormat
           readOnly={readOnly}
           type="text"
-          name={key}
-          id={key}
+          name={name}
           prefix={isPrice ? "$ " : ""}
           suffix={isPercentage ? " %" : ""}
           thousandSeparator={true}
@@ -30,16 +29,13 @@ const Input = ({
             p-2 focus:outline-none focus:border-xhv-blue-500 block w-full text-sm border-white border-2 rounded-md
             ${readOnly ? "opacity-50" : ""}`}
           value={value}
-          onValueChange={values => {
-            const { formattedValue, value } = values
-            updateFn(value)
-          }}
+          onValueChange={({ value }) => updateFn(value)}
         />
       </div>
     </>
   )
 }
-export default ({
+const Form = ({
   xhvSupply,
   price,
   xUsdSupply,
@@ -50,38 +46,40 @@ export default ({
   updateFn,
 }) => {
   const inputs = [
-    { label: "Starting XHV supply", value: xhvSupply, key: "xhvSupply" },
-    { label: "XHV market price", value: price, key: "price", isPrice: true },
+    { label: "Starting XHV supply", value: xhvSupply, name: "xhvSupply" },
+    { label: "XHV market price", value: price, name: "price", isPrice: true },
     {
       label: "XHV market Cap",
       value: (price * xhvSupply).toFixed(0),
-      key: "marketCap",
+      name: "marketCap",
       readOnly: true,
       isPrice: true,
     },
-    { label: "Starting xUSD supply", value: xUsdSupply, key: "xUsdSupply" },
-    { label: "xUSD minted per period", value: xUsdMint, key: "xUsdMint" },
+    { label: "Starting xUSD supply", value: xUsdSupply, name: "xUsdSupply" },
+    { label: "xUSD minted per period", value: xUsdMint, name: "xUsdMint" },
     {
       label: "xUSD mint inflation",
       value: xUsdInflation,
-      key: "xUsdInflation",
+      name: "xUsdInflation",
       isPercentage: true,
     },
     {
       label: "XHV price appreciation",
       value: priceAppreciation,
-      key: "priceAppreciation",
+      name: "priceAppreciation",
       isPercentage: true,
     },
-    { label: "Mint/burn periods", value: periods, key: "periods" },
+    { label: "Mint/burn periods", value: periods, name: "periods" },
   ]
   return (
     <>
-      {inputs.map(i => (
-        <div className="md:w-full w-1/2 px-2">
-          <Input {...i} updateFn={newValue => updateFn(i.key, newValue)} />
+      {inputs.map((i, index) => (
+        <div className="md:w-full w-1/2 px-2" key={`input-${index}`}>
+          <Input {...i} updateFn={newValue => updateFn(i.name, newValue)} />
         </div>
       ))}
     </>
   )
 }
+
+export default Form

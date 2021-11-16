@@ -34,7 +34,7 @@ const createPeriod = (
 const createTable = ({
   xhvSupply,
   price,
-  xUsdSupply,
+  startingXusdSupply,
   xUsdInflation,
   xUsdMint,
   priceAppreciation,
@@ -47,7 +47,7 @@ const createTable = ({
       0,
       xhvSupply,
       price,
-      xUsdSupply,
+      startingXusdSupply,
       0,
       xUsdMint,
       priceAppreciation

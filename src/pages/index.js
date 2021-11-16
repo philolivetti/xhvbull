@@ -1,7 +1,5 @@
-import React, { useState } from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
-import NumberFormat from "react-number-format"
+import React from "react"
+
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Form from "../components/form"
@@ -36,18 +34,20 @@ class IndexPage extends React.Component {
       xUsdSupply,
       xUsdInflation,
       xUsdMint,
-
       priceAppreciation,
       periods,
     } = this.state
+
+    console.log({ state: this.state })
+
     const calculations = createTable({
-      xhvSupply,
+      xhvSupply: parseInt(xhvSupply),
       price,
-      xUsdSupply,
+      startingXusdSupply: parseInt(xUsdSupply),
       xUsdInflation,
-      xUsdMint,
+      xUsdMint: parseInt(xUsdMint),
       priceAppreciation,
-      numberOfPeriods: periods,
+      numberOfPeriods: parseInt(periods),
     })
 
     this.setState({ calculations })
@@ -65,6 +65,7 @@ class IndexPage extends React.Component {
 
       showTable,
     } = this.state
+
     const formParams = {
       xhvSupply,
       price,
@@ -72,7 +73,6 @@ class IndexPage extends React.Component {
       xUsdInflation,
       periods,
       xUsdMint,
-
       priceAppreciation,
     }
     return (
@@ -87,6 +87,7 @@ class IndexPage extends React.Component {
           <p className="mb-2">
             Inspired by{" "}
             <a
+              rel="noreferrer"
               className="text-xhv-blue"
               target="_blank"
               href="https://medium.com/@crypto.oli/haven-protocol-xhv-future-price-model-based-on-xusd-adoption-1ee5a0113979"
@@ -95,6 +96,7 @@ class IndexPage extends React.Component {
             </a>{" "}
             and{" "}
             <a
+              rel="noreferrer"
               className="text-xhv-blue"
               target="_blank"
               href="https://www.youtube.com/watch?v=J6Oz5RdMJgg"
@@ -116,7 +118,6 @@ class IndexPage extends React.Component {
               // Recalc after a second
               setTimeout(() => {
                 const stateValue = this.state[key]
-                console.log({ stateValue, value })
                 if (stateValue == value) {
                   this.calculateData()
                 }
@@ -132,9 +133,13 @@ class IndexPage extends React.Component {
             {showTable ? "Hide" : "Show"} Data
           </button>
         </div>
-        <div className="w-full md:w-2/3 lg:w-5/6 mt-10 h-screen md:h-auto">
-          <Graph data={calculations} />
-        </div>
+        {calculations.length == this.state.periods ? (
+          <div className="w-full md:w-2/3 lg:w-5/6 mt-10 h-screen md:h-auto">
+            <Graph data={calculations} />
+          </div>
+        ) : (
+          <></>
+        )}
         {showTable ? <Table data={calculations} /> : <></>}
       </Layout>
     )

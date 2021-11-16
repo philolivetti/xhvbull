@@ -10,7 +10,11 @@ export default function Example() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="w-full py-6 flex items-center justify-between">
           <div className="flex items-center">
-            <img className="h-10 w-auto" src={Logo} />
+            <img
+              className="h-10 w-auto"
+              src={Logo}
+              alt={"Haven Protocol - Price Model"}
+            />
             <h2 className="ml-5 font-lg font-bold text-white">Haven Bull</h2>
           </div>
           <div className="space-x-4 space-y-2 md:space-y-0 flex flex-col md:flex-row flex-wrap">
@@ -18,6 +22,7 @@ export default function Example() {
               href="https://havenprotocol.org/"
               className={buttonClasses}
               target="_blank"
+              rel="noreferrer"
             >
               Haven Protocol
             </a>
@@ -26,6 +31,7 @@ export default function Example() {
               href="https://trade.kucoin.com/XHV-USDT"
               className={buttonClasses}
               target="_blank"
+              rel="noreferrer"
             >
               LFG! Buy now
             </a>
