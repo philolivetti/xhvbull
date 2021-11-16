@@ -160,7 +160,9 @@ class IndexPage extends React.Component {
               target="_blank"
               className="text-xhv-blue"
               href={`https://twitter.com/intent/tweet?text=Check out how ridiculously bullish this is ${
-                window ? encodeURIComponent(window.location.href) : ""
+                window !== typeof "undefined"
+                  ? encodeURIComponent(window.location.href)
+                  : ""
               } for @havenXHV`}
             >
               directly
