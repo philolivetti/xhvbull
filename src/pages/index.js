@@ -103,6 +103,10 @@ class IndexPage extends React.Component {
             </a>
             , please read and watch both of these excellent resources.
           </p>
+          <p>
+            Note: This tool does not yet include block rewards in supply
+            calculations.
+          </p>
         </div>
         <div className="w-full md:w-1/3 lg:w-1/6 flex flex-wrap">
           <Form

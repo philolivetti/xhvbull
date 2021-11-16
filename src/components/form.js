@@ -69,7 +69,7 @@ const Form = ({
       name: "priceAppreciation",
       isPercentage: true,
     },
-    { label: "Number of weeks to forecast", value: periods, name: "periods" },
+    { label: "Weeks to forecast", value: periods, name: "periods" },
   ]
   return (
     <>
