@@ -14,10 +14,10 @@ class IndexPage extends React.Component {
       xhvSupply: 14835910,
       price: 16.75,
       xUsdSupply: 22267043,
-      xUsdMint: 4000000,
+      xUsdMint: 7000000,
       xUsdInflation: 0.25,
       priceAppreciation: 0.25,
-      periods: 300,
+      periods: 208,
       calculations: [],
       showTable: false,
     }
@@ -37,8 +37,6 @@ class IndexPage extends React.Component {
       priceAppreciation,
       periods,
     } = this.state
-
-    console.log({ state: this.state })
 
     const calculations = createTable({
       xhvSupply: parseInt(xhvSupply),
@@ -77,7 +75,7 @@ class IndexPage extends React.Component {
     }
     return (
       <Layout>
-        <Seo title="LFG: XHV Price based on xUSD" />
+        <Seo title="LFG: XHV price based on xUSD minting" />
 
         <div className="w-full text-white text-sm py-5 text-justify">
           <p className="mb-2">

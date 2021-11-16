@@ -56,7 +56,7 @@ const Form = ({
       isPrice: true,
     },
     { label: "Starting xUSD supply", value: xUsdSupply, name: "xUsdSupply" },
-    { label: "xUSD minted per period", value: xUsdMint, name: "xUsdMint" },
+    { label: "Weekly xUSD minted", value: xUsdMint, name: "xUsdMint" },
     {
       label: "xUSD mint inflation",
       value: xUsdInflation,
@@ -69,7 +69,7 @@ const Form = ({
       name: "priceAppreciation",
       isPercentage: true,
     },
-    { label: "Mint/burn periods", value: periods, name: "periods" },
+    { label: "Number of weeks to forecast", value: periods, name: "periods" },
   ]
   return (
     <>

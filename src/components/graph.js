@@ -11,6 +11,10 @@ import {
   ResponsiveContainer,
 } from "recharts"
 
+import { format } from "date-fns"
+import addWeeks from "date-fns/addWeeks"
+
+const today = new Date()
 const formatter = ({
   value,
   minimumFractionDigits = 0,
@@ -26,16 +30,25 @@ const customTooltip = tooltipProps => {
   if (!payload.length) return <></>
   return (
     <div className={`box bg-white rounded p-2`}>
-      <p className="text-xs md:text-base">Period {label}</p>
+      <p className="text-xs md:text-base mb-2">
+        {format(addWeeks(today, label - 1), "MM/dd/yyyy")}
+      </p>
       <table>
         <tbody>
           {payload.map(c => {
             return (
               <tr className="text-xs md:text-base" key={c.dataKey}>
                 <th style={{ color: c.stroke, textAlign: "left" }}>{c.name}</th>
-                <td style={{ paddingLeft: "2px", textAlign: "right" }}>
+                <td style={{ paddingLeft: "5px", textAlign: "right" }}>
                   {c.name == "XHV Price" ? "$" : ""}
-                  {formatter({ value: c.value })}
+                  {c.name == "XHV / xUSD"
+                    ? formatter({
+                        value: c.value,
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })
+                    : formatter({ value: c.value })}
+                  {c.name == "XHV / xUSD" ? " %" : ""}
                 </td>
               </tr>
             )
@@ -72,6 +85,7 @@ const Graph = ({ data, isMobile = false }) => {
               tickFormatter={tick => (tick / 1000000).toLocaleString() + " mil"}
               tick={{ fontSize: "10px" }}
             />
+
             <YAxis
               yAxisId="right"
               orientation="right"
@@ -86,6 +100,12 @@ const Graph = ({ data, isMobile = false }) => {
                 style={{ textAnchor: "middle", fontSize: "12px" }}
               />
             </YAxis>
+            <YAxis
+              yAxisId="middle"
+              orientation="right"
+              tick={false}
+              style={{ display: "none" }}
+            />
           </>
         ) : (
           <></>
@@ -94,10 +114,12 @@ const Graph = ({ data, isMobile = false }) => {
         <Legend height={50} verticalAlign="top" />
         <Line
           {...lineParams}
-          yAxisId="left"
-          dataKey="xUsdSupplyAfterMint"
-          stroke="#0fbcf9"
-          name="xUSD Supply"
+          yAxisId="right"
+          dataKey="appreciatedPrice"
+          stroke="#0be881"
+          name="XHV Price"
+          strokeWidth={6}
+          activeDot={{ r: 8, strokeWidth: 1 }}
         />
         <Line
           {...lineParams}
@@ -108,12 +130,17 @@ const Graph = ({ data, isMobile = false }) => {
         />
         <Line
           {...lineParams}
-          yAxisId="right"
-          dataKey="appreciatedPrice"
-          stroke="#0be881"
-          name="XHV Price"
-          strokeWidth={6}
-          activeDot={{ r: 8, strokeWidth: 1 }}
+          yAxisId="left"
+          dataKey="xUsdSupplyAfterMint"
+          stroke="#0fbcf9"
+          name="xUSD Supply"
+        />
+        <Line
+          {...lineParams}
+          yAxisId="middle"
+          dataKey="xhvFraction"
+          stroke="#888"
+          name="XHV / xUSD"
         />
       </LineChart>
     </ResponsiveContainer>
