@@ -25,18 +25,18 @@ const customTooltip = tooltipProps => {
   const { label, payload } = tooltipProps
   if (!payload.length) return <></>
   return (
-    <div className={`box bg-white rounded p-2`}>
-      <p className="is-size-7">Period {label}</p>
+    <div className={`box bg-white rounded p-1 md:p-2`}>
+      <p className="text-xs md:text-base">Period {label}</p>
       <table>
         <tbody>
           {payload.map(c => {
             return (
-              <tr className="is-size-7" key={c.dataKey}>
+              <tr className="text-xs md:text-base" key={c.dataKey}>
                 <th style={{ color: c.stroke, textAlign: "left" }}>{c.name}</th>
-                <th style={{ paddingLeft: "2px", textAlign: "right" }}>
+                <td style={{ paddingLeft: "2px", textAlign: "right" }}>
                   {c.name == "XHV Price" ? "$" : ""}
                   {formatter({ value: c.value })}
-                </th>
+                </td>
               </tr>
             )
           })}
@@ -46,7 +46,7 @@ const customTooltip = tooltipProps => {
   )
 }
 
-const Graph = ({ data }) => {
+const Graph = ({ data, isMobile = false }) => {
   const lineParams = {
     strokeWidth: 2,
     activeDot: { r: 5, strokeWidth: 1 },
@@ -59,32 +59,37 @@ const Graph = ({ data }) => {
         data={data}
         margin={{
           top: 25,
-          right: 20,
-          left: 60,
-          bottom: 20,
+          right: isMobile ? 7 : 20,
+          left: isMobile ? 7 : 60,
+          bottom: isMobile ? 7 : 20,
         }}
       >
         <XAxis dataKey="period" tick={false} />
-
-        <YAxis
-          yAxisId="left"
-          tickFormatter={tick => (tick / 1000000).toLocaleString() + " mil"}
-          tick={{ fontSize: "10px" }}
-        />
-        <YAxis
-          yAxisId="right"
-          orientation="right"
-          tickFormatter={tick => tick.toLocaleString()}
-          tick={{ fontSize: "10px" }}
-        >
-          <Label
-            value="XHV Price"
-            angle={-90}
-            position="insideRight"
-            fill="#fff"
-            style={{ textAnchor: "middle", fontSize: "12px" }}
-          />
-        </YAxis>
+        {!isMobile ? (
+          <>
+            <YAxis
+              yAxisId="left"
+              tickFormatter={tick => (tick / 1000000).toLocaleString() + " mil"}
+              tick={{ fontSize: "10px" }}
+            />
+            <YAxis
+              yAxisId="right"
+              orientation="right"
+              tickFormatter={tick => tick.toLocaleString()}
+              tick={{ fontSize: "10px" }}
+            >
+              <Label
+                value="XHV Price"
+                angle={-90}
+                position="insideRight"
+                fill="#fff"
+                style={{ textAnchor: "middle", fontSize: "12px" }}
+              />
+            </YAxis>
+          </>
+        ) : (
+          <></>
+        )}
         <Tooltip content={customTooltip} />
         <Legend height={50} verticalAlign="top" />
         <Line

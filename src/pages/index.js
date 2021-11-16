@@ -105,10 +105,6 @@ class IndexPage extends React.Component {
             </a>
             , please read and watch both of these excellent resources.
           </p>
-          <p className="md:hidden">
-            The user experience on mobile is not ideal. Please click on the
-            graph to see tooltip.
-          </p>
         </div>
         <div className="w-full md:w-1/3 lg:w-1/6 flex flex-wrap">
           <Form
@@ -125,7 +121,7 @@ class IndexPage extends React.Component {
             }}
           />
           <button
-            className="mt-10 mx-2 inline-block bg-xhv-blue py-2 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-xhv-bluer"
+            className="mt-5 mx-2 inline-block bg-xhv-blue py-2 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-xhv-bluer"
             onClick={() => {
               this.setState({ showTable: !showTable })
             }}
@@ -134,9 +130,18 @@ class IndexPage extends React.Component {
           </button>
         </div>
         {calculations.length == this.state.periods ? (
-          <div className="w-full md:w-2/3 lg:w-5/6 mt-10 h-screen md:h-auto">
-            <Graph data={calculations} />
-          </div>
+          <>
+            <div className="w-full md:hidden" style={{ height: "50vh" }}>
+              <p className="md:hidden text-base text-white mt-10 text-center">
+                Please click on the graph to see data
+              </p>
+              <Graph data={calculations} isMobile={true} />
+            </div>
+
+            <div className="w-full md:w-2/3 lg:w-5/6 hidden md:inline-block">
+              <Graph data={calculations} />
+            </div>
+          </>
         ) : (
           <></>
         )}
