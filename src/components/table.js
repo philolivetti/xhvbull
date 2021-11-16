@@ -1,36 +1,7 @@
 import React from "react"
 
-/* This example requires Tailwind CSS v2.0+ */
-const people = [
-  {
-    name: "Jane Cooper",
-    title: "Regional Paradigm Technician",
-    role: "Admin",
-    email: "jane.cooper@example.com",
-  },
-  {
-    name: "Cody Fisher",
-    title: "Product Directives Officer",
-    role: "Owner",
-    email: "cody.fisher@example.com",
-  },
-  // More people...
-]
-/*
-"period": 1,
-"xUsdMint": 4000000,
-"xUsdSupplyAfterMint": 26267043,
-"xhvBurnt": 242424.24242424243,
-"xhvSupplyAfterBurn": 14583597.757575758,
-"ComputedPrice": 16.774280741041565,
-"appreciatedPrice": 16.82460358326469,
-"xhvMarketCap": 244629363,
-"totalEconomy": 271630294.089,
-"xhvFraction": 0.9032985511130303
-*/
-
 const labels = {
-  period: "Period",
+  period: "Day",
   xUsdMint: "xUSD Minted",
   xUsdSupplyAfterMint: "xUSD Supply After Mint",
   xhvBurnt: "XHV Burnt",

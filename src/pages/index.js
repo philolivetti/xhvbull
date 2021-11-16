@@ -1,4 +1,5 @@
 import React from "react"
+import { sha256 } from "crypto-hash"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -6,25 +7,52 @@ import Form from "../components/form"
 import Table from "../components/table"
 import Graph from "../components/graph"
 import createTable from "../utils/createTable"
+import { navigate } from "@reach/router"
 
 class IndexPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      xhvSupply: 14835910,
-      price: 16.75,
+      xhvSupply: 14836682,
+      price: 16.71,
       xUsdSupply: 22267043,
-      xUsdMint: 7000000,
+      xUsdMint: 2500000,
       xUsdInflation: 0.25,
       priceAppreciation: 0.25,
-      periods: 208,
+      periods: 365,
       calculations: [],
       showTable: false,
     }
   }
 
   componentDidMount() {
-    this.calculateData()
+    console.log({ props: this.props })
+    if (
+      this.props.location &&
+      this.props.location.search &&
+      this.props.location.search.includes("strategy")
+    ) {
+      const search = this.props.location.search
+      const splitString = search.split("=")
+      if (splitString.length > 1) {
+        const properties = splitString[1].split(",")
+
+        console.log({ search, properties })
+        if (properties.length == 7) {
+          this.setState({
+            xhvSupply: properties[0],
+            price: properties[1],
+            xUsdSupply: properties[2],
+            xUsdInflation: properties[3],
+            xUsdMint: properties[4],
+            priceAppreciation: properties[5],
+            periods: properties[6],
+          })
+        }
+      }
+    } else {
+      this.calculateData()
+    }
   }
 
   calculateData() {
@@ -50,6 +78,29 @@ class IndexPage extends React.Component {
 
     this.setState({ calculations })
   }
+
+  // updates strategy in the URL so that people can bookmark this strategy specifically
+  async updateStrategy() {
+    const {
+      xhvSupply,
+      price,
+      xUsdSupply,
+      xUsdInflation,
+      xUsdMint,
+      priceAppreciation,
+      periods,
+    } = this.state
+
+    const concatenatedString = `${xhvSupply},${price},${xUsdSupply},${xUsdInflation},${xUsdMint},${priceAppreciation},${periods}`
+    if (window) {
+      window.history.pushState(
+        {},
+        null,
+        window.location.origin + `?strategy=${concatenatedString}`
+      )
+    }
+  }
+
   render() {
     const {
       xhvSupply,
@@ -77,10 +128,10 @@ class IndexPage extends React.Component {
       <Layout>
         <Seo title="LFG: XHV price based on xUSD minting" />
 
-        <div className="w-full text-white text-sm py-5 text-justify">
+        <div className="w-full text-white text-sm py-5">
           <p className="mb-2">
-            This is an easy to use XHV price forecasting tool based on various
-            xAsset minting characteristics.
+            This is an easy to use XHV price forecasting tool based on xAsset
+            minting.
           </p>
           <p className="mb-2">
             Inspired by{" "}
@@ -95,13 +146,26 @@ class IndexPage extends React.Component {
             and{" "}
             <a
               rel="noreferrer"
-              className="text-xhv-blue"
               target="_blank"
+              className="text-xhv-blue"
               href="https://www.youtube.com/watch?v=J6Oz5RdMJgg"
             >
               CTO Larsson's video
             </a>
             , please read and watch both of these excellent resources.
+          </p>
+          <p className="mb-2">
+            Changes to your strategy will be added to the URL and this can be
+            bookmarked or shared{" "}
+            <a
+              target="_blank"
+              className="text-xhv-blue"
+              href={`https://twitter.com/intent/tweet?text=Check out how ridiculously bullish this is ${
+                window ? encodeURIComponent(window.location.href) : ""
+              } for @havenXHV`}
+            >
+              directly
+            </a>
           </p>
           <p>
             Note: This tool does not yet include block rewards in supply
@@ -117,6 +181,7 @@ class IndexPage extends React.Component {
               setTimeout(() => {
                 const stateValue = this.state[key]
                 if (stateValue == value) {
+                  this.updateStrategy()
                   this.calculateData()
                 }
               }, 1250)

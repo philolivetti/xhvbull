@@ -12,7 +12,7 @@ import {
 } from "recharts"
 
 import { format } from "date-fns"
-import addWeeks from "date-fns/addWeeks"
+import addDays from "date-fns/addDays"
 
 const today = new Date()
 const formatter = ({
@@ -31,7 +31,7 @@ const customTooltip = tooltipProps => {
   return (
     <div className={`box bg-white rounded p-2`}>
       <p className="text-xs md:text-base mb-2">
-        {format(addWeeks(today, label - 1), "MM/dd/yyyy")}
+        {format(addDays(today, label - 1), "MM/dd/yyyy")}
       </p>
       <table>
         <tbody>

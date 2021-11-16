@@ -2,7 +2,7 @@
 
 import React from "react"
 import Logo from "../assets/xhv-logo.svg"
-export default function Example() {
+export default function Footer() {
   const buttonClasses =
     "inline-block bg-xhv-blue py-2 px-4 border border-transparent rounded-md text-xs font-medium text-white hover:bg-xhv-bluer"
   return (
