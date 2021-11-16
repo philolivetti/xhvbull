@@ -1,5 +1,4 @@
 import React from "react"
-import { sha256 } from "crypto-hash"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
