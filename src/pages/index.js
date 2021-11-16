@@ -1,7 +1,7 @@
 import React from "react"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import Form from "../components/form"
 import Table from "../components/table"
 import Graph from "../components/graph"
@@ -77,7 +77,7 @@ class IndexPage extends React.Component {
     }
     return (
       <Layout>
-        <SEO title="LFG: XHV Price based on xUSD" />
+        <Seo title="LFG: XHV Price based on xUSD" />
 
         <div className="w-full text-white text-sm py-5 text-justify">
           <p className="mb-2">

@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `XHV Bull`,
-    description: `Price Models on XHV based on xUSD Minting and usage`,
+    description: `Haven protocol price forecast based on xUSD adoption`,
     author: `@xPhilOlivetti`,
   },
   flags: {
