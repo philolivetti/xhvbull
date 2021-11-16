@@ -20,20 +20,15 @@ export default function Header() {
           <div className="space-x-4 space-y-2 md:space-y-0 flex flex-col md:flex-row flex-wrap">
             <a
               href="https://havenprotocol.org/"
-              className={`${buttonClasses} flex items-center`}
+              className={buttonClasses}
               target="_blank"
               rel="noreferrer"
             >
-              <img
-                className="h-3 w-3 mr-2"
-                src={Logo}
-                alt={"Haven Protocol - Price Model"}
-              />
               Haven Protocol
             </a>
 
             <a
-              href="https://www.kucoin.com/ucenter/signup?rcode=2M6Rhgg"
+              href="https://trade.kucoin.com/XHV-USDT"
               className={buttonClasses}
               target="_blank"
               rel="noreferrer"
