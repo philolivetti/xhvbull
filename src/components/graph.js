@@ -25,7 +25,7 @@ const customTooltip = tooltipProps => {
   const { label, payload } = tooltipProps
   if (!payload.length) return <></>
   return (
-    <div className={`box bg-white rounded p-1 md:p-2`}>
+    <div className={`box bg-white rounded p-2`}>
       <p className="text-xs md:text-base">Period {label}</p>
       <table>
         <tbody>
