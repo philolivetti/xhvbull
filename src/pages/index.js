@@ -12,9 +12,9 @@ class IndexPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      xhvSupply: 14836682,
-      price: 16.71,
-      xUsdSupply: 22267043,
+      xhvSupply: 15304807,
+      price: 7.33,
+      xUsdSupply: 33032926,
       xUsdMint: 2500000,
       xUsdInflation: 0.25,
       priceAppreciation: 0.25,
