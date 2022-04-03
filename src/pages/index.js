@@ -25,7 +25,6 @@ class IndexPage extends React.Component {
   }
 
   componentDidMount() {
-    console.log({ props: this.props })
     if (
       this.props.location &&
       this.props.location.search &&
@@ -36,7 +35,6 @@ class IndexPage extends React.Component {
       if (splitString.length > 1) {
         const properties = splitString[1].split(",")
 
-        console.log({ search, properties })
         if (properties.length == 7) {
           this.setState({
             xhvSupply: properties[0],
