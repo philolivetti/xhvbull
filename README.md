@@ -7,12 +7,11 @@ Gatsby deployed on netlify
 ## Contibutions are welcome
 
 Next up:
-
+- Include tail emission in XHV supply.
 - Market Price and supply pulled dynamically.
 - Compare resulting xUSD marketcap to other stable coin ecosystems to support achievability.
 - Include other xAssets in xUSD value.
 - Convert periods to day and week. Show Dates on X Axis.
-- Include tail emission in XHV supply.
 - xUSD minting inflation based on moving average of xUSD minting.
 
 ## IF you want to buy me a beer or coffee:
